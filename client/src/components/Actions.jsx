@@ -86,6 +86,7 @@ const Actions = ({ liked,setLiked }) => {
 						<FormControl>
 							<Input
 								placeholder='Reply goes here..'
+
 								onChange={()=>{}}
 							/>
 						</FormControl>
