@@ -9,13 +9,14 @@ const UserPage = () => {
 	const { user, setUser } = useState(null);
 	const { username } = useParams();
 	const showToast = useShowToast();
+  const [loading,setLoading] = useState(true)
 
 
 	useEffect(() => {
 		const getUser = async () => {
 
 			try {
-				const res = await fetch(`/api/posts/user/${username}`);
+				const res = await fetch(`/api/users/profile/${username}`);
 				const data = await res.json();
       	if(data.error) {
           showToast("Error", data.error,"error")
@@ -24,13 +25,24 @@ const UserPage = () => {
         setUser(data);
 			} catch (error) {
 				showToast("Error",error,"error")
-			}
+			}finally{
+        setLoading(false)
+      }
     }
   
     getUser()
-  },[username]);
+  },[username,showToast]);
 
-	
+  if(!user && loading){
+    return(
+
+      <Spinner size="xl"/>
+    )
+  }
+
+  if(!user &&  !loading) return <h1>User not found</h1>
+
+	if(!user) return null;
 	return (
     <>
    <UserHeader/>
