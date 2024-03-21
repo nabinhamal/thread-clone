@@ -112,8 +112,10 @@ if(following) {
 			<Text>{user.bio}</Text> 
 
 			{currentUser?._id === user._id && (
-				<Link as={RouterLink} href="/update">
-					<Button size={"sm"}>Update Profile</Button>
+				<Link as={RouterLink} to="/update">
+					<Button size={"sm"}>
+					Update Profile
+					</Button>
 				</Link>
 			)}
 			

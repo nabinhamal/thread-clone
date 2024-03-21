@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react'
 
 import useShowToast from '../hooks/useShowToast';
 import Post from '../components/Post';
+import { useRecoilState } from 'recoil';
+import postsAtom from '../atoms/postAtom';
 
 const HomePage = () => {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useRecoilState(postsAtom)
   const [loading, setLoading] = useState(true);
 	const showToast = useShowToast();
 

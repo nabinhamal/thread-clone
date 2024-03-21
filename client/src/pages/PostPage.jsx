@@ -9,11 +9,12 @@ import { formatDistanceToNow } from "date-fns";
 import { useRecoilState, useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
 import { DeleteIcon } from "@chakra-ui/icons";
+import postsAtom from "../atoms/postAtom";
 
 
 const PostPage = () => {
 	const { user, loading } = useGetUserProfile();
-	const [posts, setPosts] = useState([])
+	const [posts, setPosts] = useRecoilState(postsAtom);
 	const showToast = useShowToast();
 	const { pid } = useParams();
 	const currentUser = useRecoilValue(userAtom);
@@ -66,7 +67,8 @@ const PostPage = () => {
 		);
 	}
 
-	
+	if (!currentPost) return null;
+	console.log("currentPost", currentPost);
 
 	return (
 		<>

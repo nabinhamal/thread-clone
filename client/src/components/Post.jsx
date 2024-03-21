@@ -9,13 +9,14 @@ import { formatDistanceToNow } from "date-fns";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { useRecoilState, useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
+import postsAtom from "../atoms/postAtom";
 
 
 const Post = ({ post, postedBy }) => {
 	const [user, setUser] = useState(null);
 	const showToast = useShowToast();
 	const currentUser = useRecoilValue(userAtom);
-	const [posts, setPosts] = useState([]);
+	const [posts, setPosts] = useRecoilState(postsAtom);
 	const navigate = useNavigate();
 
 	useEffect(() => {

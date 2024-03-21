@@ -25,6 +25,7 @@ import userAtom from "../atoms/userAtom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import useShowToast from "../hooks/useShowToast";
 import { useParams } from "react-router-dom";
+import postsAtom from "../atoms/postAtom";
 
 const MAX_CHAR = 500;
 
@@ -39,7 +40,7 @@ const CreatePost = () => {
 	const showToast = useShowToast();
 	const [loading, setLoading] = useState(false);
 	const { username } = useParams();
-    const [posts, setPosts] =useState([]);
+    const [posts, setPosts] =useRecoilState(postsAtom)
 
 	const handleTextChange = (e) => {
 		const inputText = e.target.value;
