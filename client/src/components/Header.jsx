@@ -9,9 +9,9 @@ import {RxAvatar} from "react-icons/rx"
 
 const Header = () => {
     const { colorMode, toggleColorMode } = useColorMode();
-    const currentUser = useRecoilValue(userAtom)
+    const user = useRecoilValue(userAtom)
   return (
-    <Flex justifyContent={"center"} mt={6} mb='12'>
+    <Flex justifyContent={"space-between"} mt={6} mb='12'>
       {user && (
         <Link as={RouterLink} to="/" >
         <AiFillHome/>

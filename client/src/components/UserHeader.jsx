@@ -85,7 +85,7 @@ if(following) {
 					</Flex>
 				</Box>
 				<Box>
-					{user.profilePic && (
+					{user?.profilePic && (
 						<Avatar
 							name={user.name}
 							src={user.profilePic}
@@ -95,7 +95,7 @@ if(following) {
 							}}
 						/>
 	)}
-{!user.profilePic && (
+{!user?.profilePic && (
 <Avatar
 							name={user.name}
 							src='https://bit.ly/broken-link'
@@ -111,13 +111,13 @@ if(following) {
 
 			<Text>{user.bio}</Text> 
 
-			{currentUser._id === user._id && (
+			{currentUser?._id === user._id && (
 				<Link as={RouterLink} href="/update">
 					<Button size={"sm"}>Update Profile</Button>
 				</Link>
 			)}
 			
-			{currentUser._id !== user._id && 
+			{currentUser?._id !== user._id && 
 				
 					<Button size={"sm"} onClick={handleFollow} isLoading={updating}>
 					{following ? "Unfollow" : "Follow"}
